@@ -1,0 +1,240 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+body{
+    margin: 0;
+    padding: 0;
+    /*background: url(../../images/britain-fleet-taxi.jpg);*/
+    background: url(../img/britain-fleet-taxi-sombreado.png);
+    
+    background-size: cover;
+    background-position: center;
+    font-family: 'Montserrat', sans-serif;
+}
+.login-box{
+    width: 20em;
+    height: 26.2em;
+    background: rgba(255, 255, 255, 0.95);
+    color: black;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    box-sizing: border-box;
+    padding: 4.3em 1.8em;
+    border-radius: 15px;
+}
+.avatar{
+    width: 6.2em;
+    height: 6.2em;
+    border-radius: 50%;
+    position: absolute;
+    top: -3.1em;
+    left: calc(50% - 3.1em);
+}
+
+.logo{
+    width: 10em;
+    position: relative;
+    top: -0.9em;
+    left: calc(50% - 5em);
+}
+
+h1{
+    margin: 0;
+    padding: 0 0 1.2em;
+    text-align: center;
+    font-size: 1.3em;
+}
+.login-box p{
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+}
+.login-box input{
+    width: 100%;
+    margin-bottom: 1.2em;
+}
+.login-box input[type="text"], input[type="password"]
+{
+    border: none;
+    border-bottom: 1px solid #000;
+    background: transparent;
+    outline: none;
+    height: 2.5em;
+    color: #ad4232;
+    /*font-weight: bold;*/
+    font-size: 1.2em;
+}
+.login-box input[type="submit"]
+{
+    border: none;
+    outline: none;
+    height: 2.5em;
+    background-color: #991e1d;
+    color: #fff;
+    font-size: 1.1em;
+    border-radius: 0.5em;
+    transition: background-color .5s;
+    /*transition: color 1s;*/
+}
+.login-box input[type="submit"]:hover
+{
+    cursor: pointer;
+    background-color: #e97770;
+}
+
+.login-box a{
+    text-decoration: none;
+    font-size: 0.8em;
+    color: #939598;
+}
+.login-box a:hover
+{
+    color: #e43e32;
+}
+
+/*@media screen and (max-width: 414px) 
+{
+    body{
+    margin: 0;
+    padding: 0;
+    background: url(../../images/britain-fleet-taxi.jpg);
+    background-size: cover;
+    background-position: left;
+    font-family: 'Montserrat', sans-serif;
+}
+.login-box{
+    width: 20em;
+    height: 26.2em;
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    box-sizing: border-box;
+    padding: 4.3em 1.8em;
+}
+.avatar{
+    width: 6.2em;
+    height: 6.2em;
+    border-radius: 50%;
+    position: absolute;
+    top: -3.1em;
+    left: calc(50% - 3.1em);
+}
+h1{
+    margin: 0;
+    padding: 0 0 1.2em;
+    text-align: center;
+    font-size: 1.3em;
+}
+.login-box p{
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+}
+.login-box input{
+    width: 100%;
+    margin-bottom: 1.2em;
+}
+.login-box input[type="text"], input[type="password"]
+{
+    border: none;
+    border-bottom: 1px solid #fff;
+    background: transparent;
+    outline: none;
+    height: 2.5em;
+    color: #fff;
+    font-size: 1em;
+}
+.login-box input[type="submit"]
+{
+    border: none;
+    outline: none;
+    height: 2.5em;
+    background: #939598;
+    color: #fff;
+    font-size: 1.1em;
+    border-radius: 1.2em;
+    transition: background .5s;
+     transition: color .5s;
+}
+.login-box input[type="submit"]:hover
+{
+    cursor: pointer;
+    background: #e97770;
+    color: #000;
+}
+
+.login-box a{
+    text-decoration: none;
+    font-size: 0.8em;
+    color: #fff;
+}
+.login-box a:hover
+{
+    color: #e97770;
+}
+}
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

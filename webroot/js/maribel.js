@@ -1,0 +1,10 @@
+$(document).ready(function(){ 
+        $('.btn_opciones').on('click',function(e){
+            $(this).parent().next().toggle();
+            e.preventDefault();
+        });
+        $('#btn_opciones').on('click',function(e){
+            $('.respuesta').toggle('slow');
+            e.preventDefault();
+        });
+    });
