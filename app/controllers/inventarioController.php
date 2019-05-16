@@ -15,17 +15,12 @@ class inventarioController extends Controller {
     	$proyecto=$provincia->desplegable_mod($id_provincia);
 
     	$contentenido='';
-    	foreach ($contentenido as $value) 
+    	foreach ($proyecto as $value) 
     	{
-    		$contentenido += '<option value="'.$proyecto[i]['id_project'].'">'.$proyecto[i]['nom_project'].'</option>'; 
+    		$contentenido .= '<option value='.$value["id_project"].'>'.$value["nom_project"].'</option>'; 
     	}
 
-
-    	// for ($i=0; $i < $proyecto.lenght-1 ; $i++) 
-    	// { 
-    	// 	$contentenido += '<option value="'.$proyecto[i]['id_project'].'">'.$proyecto[i]['nom_project'].'</option>'; 
-    	// }
-    	return $contentenido;
+    	echo json_encode($contentenido);//una petición de ajax siempre se hace sobre echo y json.
 	}
 
 }

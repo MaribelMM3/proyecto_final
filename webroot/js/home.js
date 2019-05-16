@@ -26,7 +26,8 @@ $(document).ready(function(){
                 url:'inventario/desplegable_cont', //irá a inventarioController método desplegable_cont()
                 data: prov,
                 success:function(data){
-                    $('#select_project').html(data); //inyecta en el selector de proyecto las opciones de provincia.
+                	var data2= JSON.parse(data);
+                    $('#select_project').html(data2); //inyecta en el selector de proyecto las opciones de provincia.
 
                 }
             }); 
