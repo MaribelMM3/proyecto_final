@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="es">
     <head>
-        <title>Plantilla MVC</title>
+        <title>Gesfleet</title>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <base href="<?php echo BASE_DOMAIN_DIR_URL?>">
@@ -11,14 +11,10 @@
         <script type="text/javascript" src="webroot/js/jquery-3.3.1.min.js"></script>
         <script type="text/javascript" src="webroot/js/home.js"></script>
 
-        <script src="webroot/js/jquery.min.js"></script>
-        <script src="webroot/js/jquery.dropotron.min.js"></script>
-        <script src="webroot/js/browser.min.js"></script>
-        <script src="webroot/js/breakpoints.min.js"></script>
-        <script src="webroot/js/util.js"></script>
-        <script src="webroot/js/main.js"></script>
+        
     </head>
-    <body>
+    <body style="margin: 0;">
+        <div id="page-wrapper">
         <header> 
             <?php
                 if (!isset($_SESSION['user'])) 
@@ -32,11 +28,11 @@
                                 </li>
                                 <li class="current">
                                     <a href="<?php echo BASE_DIR_URL?>inventario/index">Flota</a>
-                                    <ul>
+                                    <!-- <ul>
                                         <li><a href="#">Inventario</a></li>
                                         <li><a href="#">Catálogo</a></li>
                                         <li><a href="#">Informes</a></li>
-                                    </ul>
+                                    </ul> -->
                                 </li>
                                 <li>
                                     <a href="#">Mantenimientos</a>
@@ -73,8 +69,7 @@
                                 <p>Fulanito</p>
                                 </div>
                             </ul>
-                        </nav>
-                
+                        </nav>                
             <?php } ?>
 
             
@@ -84,12 +79,19 @@
             <?php echo $content_for_layout;?> 
 
         </main>
-        <footer>
+        <footer id="footer">
 
-            <p><?php echo date("Y");?> © MVC</p>
+            <?php echo date("Y");?> © Maribel Marín Martín
             
         </footer>
 
-        
+    </div>
+
+        <script src="webroot/js/jquery.min.js"></script>
+        <script src="webroot/js/jquery.dropotron.min.js"></script>
+        <script src="webroot/js/browser.min.js"></script>
+        <script src="webroot/js/breakpoints.min.js"></script>
+        <script src="webroot/js/util.js"></script>
+        <script src="webroot/js/main.js"></script>
     </body>
 </html>
