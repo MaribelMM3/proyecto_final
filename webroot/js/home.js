@@ -1,6 +1,16 @@
+function valmatricula(e){
+  e.preventDefault();
+    var txtModel = document.getElementById('matricula').value;
+    if(txtModel == null || txtModel.length < 7 || txtModel.length > 7  || !/^[a-zA-Z0-9]*$/.test(txtModel))
+    {
+      document.getElementById("matricula").style.border = "2px solid red";          
+    }else{
+      document.getElementById("matricula").style.border = "1px solid green";
+    } 
+}
+
+
 $(document).ready(function(){
-
-
 	$(".nav-button").click(function() {
     $(this).parent().parent().toggleClass("closed");
   });

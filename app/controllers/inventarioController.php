@@ -25,33 +25,3 @@ class inventarioController extends Controller {
 
 }
 
-
-// 1array(3) {
-//   [0]=>
-//   array(3) {
-//     ["id_project"]=>
-//     string(1) "1"
-//     ["nom_project"]=>
-//     string(9) "BNC Ayto."
-//     ["select_prov_id_prov"]=>
-//     string(1) "1"
-//   }
-//   [1]=>
-//   array(3) {
-//     ["id_project"]=>
-//     string(1) "2"
-//     ["nom_project"]=>
-//     string(4) "DIBA"
-//     ["select_prov_id_prov"]=>
-//     string(1) "1"
-//   }
-//   [2]=>
-//   array(3) {
-//     ["id_project"]=>
-//     string(1) "7"
-//     ["nom_project"]=>
-//     string(12) "Privados_BCN"
-//     ["select_prov_id_prov"]=>
-//     string(1) "1"
-//   }
-// }

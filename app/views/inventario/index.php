@@ -2,11 +2,14 @@
 
 <!-- TABLERO DE DATOS  -->
 <div class="box">
-	<div class="title_div">
+	<!-- <div class="title_div">
 		<span class="title">FLOTA</span>
-	</div>
+	</div> -->
 	
 	<div class="container">
+		<div class="title_div">
+			<span class="title">FLOTA</span>
+		</div>
 		<span id="desplegable">
 			<input type="button" name="opciones_inventario" value="Registrar vehículo" id="btn_registro" onclick="btn_registro()">
 		</span>
@@ -19,7 +22,7 @@
 
 			<table class="default">
 					<tr>
-						<th>Icon</th>
+						<th></th>
 						<th>Matrícula</th>
 						<th>Tipo</th>
 						<th>Status</th>
@@ -30,15 +33,36 @@
 						<th>Acciones</th>
 					</tr>
 					<tr>
-						<td><img src="webroot/img/icon_turismo.png" style="width: 2em;"></td>
-						<td>111AAA</td>
+						<td style="background: none;"><img id="icon_table" src="webroot/img/icon_turismo.png"></td>
+						<td>1111AAA</td>
 						<td>Turismo</td>
 						<td>Activo</td>
 						<td>Coordinación</td>
 						<td>Ayto. BCN</td>
 						<td>Barcelona</td>
 						<td>Cataluña</td>
-						<td style="width: 1%;">
+						<td style="width: 1%; background: none;">
+							<span id="desplegable">
+					         <ul class="drop-down closed">
+							    <li><p class="nav-button" style="cursor: pointer;">OPCIONES ▼</p></li>			    
+							    <li><a href="#">Editar vehículo</a></li>
+							    <li><a href="#">Imprimir vehículo</a></li>
+							    <li><a href="#">Archivar vehículo</a></li>
+							    <li><a href="#">Eliminar vehículo</a></li>
+							 </ul>			         
+							</span>
+						</td>
+				</tr>
+				<tr>
+						<td style="background: none;"><img id="icon_table" src="webroot/img/icon_moto.png"></td>
+						<td>2222AAA</td>
+						<td>Moto</td>
+						<td>Activo</td>
+						<td>UM</td>
+						<td>Ayto. BCN</td>
+						<td>Barcelona</td>
+						<td>Cataluña</td>
+						<td style="width: 1%; background: none;">
 							<span id="desplegable">
 					         <ul class="drop-down closed">
 							    <li><p class="nav-button" style="cursor: pointer;">OPCIONES ▼</p></li>			    
@@ -62,7 +86,7 @@
 				      <h3>Registrar un vehículo</h3>
 				      <div id="div_line">
 					      <label>Matrícula</label>
-					      <input type="text" name="matricula" id="matricula" placeholder="Matrícula" required onkeyup="valmatricula(event)">
+					      <input type="text" name="matricula" id="matricula" placeholder="1234abc" style="text-transform: uppercase;" required onkeyup="valmatricula(event)">
 					      <span id="valmatricula" style="float: right; margin-right: 12%; font-size: xx-large; color: #cc0000;"></span>
 					  </div>
 				      <br>

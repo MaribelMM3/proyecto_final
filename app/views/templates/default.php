@@ -17,7 +17,7 @@
         <div id="page-wrapper">
         <header> 
             <?php
-                if (!isset($_SESSION['user'])) 
+                if (isset($_SESSION['user'])) 
                 {?>
                     <nav id="nav">
                             <div><img src="webroot/img/Tunstall.png" alt="Tunstall" id="logo-nav"></div>
