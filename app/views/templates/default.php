@@ -17,7 +17,7 @@
         <div id="page-wrapper">
         <header> 
             <?php
-                if (isset($_SESSION['user'])) 
+                if (isset($_SESSION['username'])) 
                 {?>
                     <nav id="nav">
                             <div><img src="webroot/img/Tunstall.png" alt="Tunstall" id="logo-nav"></div>
@@ -65,8 +65,11 @@
                                         <li><a href="#">Tipos</a></li>
                                     </ul>
                                 </li>
+                                <li>
+                                    <a href="<?php echo BASE_DIR_URL?>home/cerrar">Cerrar</a>
+                                </li>
                                 <div class="user-nav">
-                                <p>Fulanito</p>
+                                <p>Bienvenid@ <?php echo $_SESSION["username"]?></p>
                                 </div>
                             </ul>
                         </nav>                

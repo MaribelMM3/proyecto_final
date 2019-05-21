@@ -8,6 +8,7 @@ class homeController extends Controller {
 
     }
 
+
     public function login()
     {
     	if (isset($_POST['username']) && isset($_POST['password']))
@@ -22,13 +23,15 @@ class homeController extends Controller {
             $b = $a->login_mod($username, $password);
 
             echo json_encode($b);
-
-            //redirigir a la vista home en 
+        } else {
+            header('Location: '.BASE_DOMAIN_DIR_URL.'webroot/404.php');
         }
-
-    	//es correcto?
-    	//$_SESSION
-    	//$this->render('index');
     }
 
+    public function cerrar()
+        {
+            unset($_SESSION['username']);
+            session_destroy();
+            header('Location:'.BASE_DOMAIN_DIR_URL.'home/index');
+        }
 }

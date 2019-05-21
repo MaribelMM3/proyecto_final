@@ -1,6 +1,11 @@
 <?php defined('BASEPATH') or exit ('No se permite acceso directo');?>
 
 <!-- TABLERO DE DATOS  -->
+
+<?php
+    if (isset($_SESSION['username'])) 
+    {
+?>
 <div class="box">
 	<!-- <div class="title_div">
 		<span class="title">FLOTA</span>
@@ -153,7 +158,9 @@
 				  </form>  
 			</div><!-- /div_form2 -->			
 		</div><!-- /div_form -->
-
+ <?php }
+	 else{header('Location: '.BASE_DOMAIN_DIR_URL.'webroot/404.php');}
+?>
 
 <!-- <img src="webroot/img/icon_moto.png" style="width: 2em; padding-top: .5%;">
 <img src="webroot/img/icon_turismo.png" style="width: 3em; float: left; margin-left: .5%;"> -->

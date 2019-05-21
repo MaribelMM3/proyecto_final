@@ -1,6 +1,7 @@
 <?php defined('BASEPATH') or exit ('No se permite acceso directo');
 
-class user extends Model {
+class user extends Model 
+{
 	public function login_mod($username, $password)
 	{
 		
@@ -11,16 +12,14 @@ class user extends Model {
 		$stmt->bindParam(':user', $username);
 		$stmt->bindParam(':psw', $password);
 
-		sleep(1);
-
-		if(!$stmt->execute()) {
-
-			return 'Usuari@ no existe en la base de datos';
-
-		} else {
+		$stmt->execute();
+		if ($stmt->rowCount() == 1)
+		{
 			$_SESSION['username'] = $username;
-			return 'Login correcto.<BR>'.'Bienvenid@ '.$username;
-
+			return true;
+		} else {
+			return false;
 		}
 	}
 }
+

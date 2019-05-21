@@ -3867,6 +3867,9 @@ input, select, textarea {
 
 	}
 
+.error-validation{
+	border: 1px solid red;
+}
 /*PRUEBA TABLA RESPONSIVE*/
 /*@media only screen 
     and (max-width: 760px), (min-device-width: 768px) 

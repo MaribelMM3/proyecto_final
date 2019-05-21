@@ -27,20 +27,71 @@ $(document).ready(function(){
     $("#div_form").css("display", "none");
   });
 
+  $('.btn_opciones').on('click',function(e){
+            $(this).parent().next().toggle();
+            e.preventDefault();
+  });
+        $('#btn_opciones').on('click',function(e){
+            $('.respuesta').toggle('slow');
+            e.preventDefault();
+        });
+
+
+    //login
+    $("#login").on("submit", function(e)
+    {  
+      e.preventDefault();
+      $.ajax({
+        type: 'post',
+        url: '/proyecto_final/home/login',
+        data: $("#login").serialize(),
+        dataType: 'json',
+
+          beforeSend: function(){
+            $("#Mensaje").html("Enviando datos...");
+          },
+
+          success: function(data){
+            if(data)
+            {
+              $("#Mensaje").html("Login correcto, redirigiendo...");
+              setTimeout(function()
+              {
+                location.href = "inventario/index";
+              },1500);
+            }
+            else
+            {
+              $("#Mensaje").html("No existe.");
+            }
+            
+              
+            },
+
+          error: function(){
+            $("#Mensaje").html("Error en el envío de datos al server");
+          }
+      });
+    });
+
+
+
 
 // llamar ajax prov = data, enviará al controlador 'inventarioController' y este lo enviará al modelo 'inventarioModel'
-	$("#select_prov").change(function(){
+	$("#select_prov").change(function()
+  {
 		var prov = $("#select_prov"); //JS recoge los datos de la #id del select.
 		 $.ajax({
-                type:'POST',
-                url:'inventario/desplegable_cont', //irá a inventarioController método desplegable_cont()
-                data: prov,
-                success:function(data){
-                	var data2= JSON.parse(data);
-                    $('#select_project').html(data2); //inyecta en el selector de proyecto las opciones de provincia.
-
-                }
-            }); 
+        type:'POST',
+        url:'inventario/desplegable_cont', //irá a inventarioController método desplegable_cont()
+        data: prov,
+        success:function(data)
+        {
+          var data2= JSON.parse(data);
+          $('#select_project').html(data2); //inyecta en el selector de proyecto las opciones de provincia.
+        }
+    }); 
 	});
-  
+
 });
+  

@@ -22,6 +22,5 @@ class inventarioController extends Controller {
 
     	echo json_encode($contentenido);//una petición de ajax siempre se hace sobre echo y json.
 	}
-
 }
 
