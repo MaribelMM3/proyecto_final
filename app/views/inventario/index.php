@@ -16,7 +16,7 @@
 			<span class="title">FLOTA</span>
 		</div>
 		<span id="desplegable">
-			<input type="button" name="opciones_inventario" value="Registrar vehículo" id="btn_registro" onclick="btn_registro()">
+			<input type="button" name="registro_vehiculo" value="Registrar vehículo" id="btn_registro" onclick="btn_registro()">
 		</span>
 		<span id="desplegable">
 			<form class="search" action="">
@@ -25,60 +25,19 @@
 			</form>   
 		</span>
 
-			<table class="default">
+			<table class="default" id="tabla_cont_inv">
 					<tr>
 						<th></th>
 						<th>Matrícula</th>
 						<th>Tipo</th>
 						<th>Status</th>
 						<th>Departamento</th>
-						<th>Proyecto</th>
-						<th>Provincia</th>
 						<th>Territorio</th>
+						<th>Provincia</th>
+						<th>Proyecto</th>						
 						<th>Acciones</th>
 					</tr>
-					<tr>
-						<td style="background: none;"><img id="icon_table" src="webroot/img/icon_turismo.png"></td>
-						<td>1111AAA</td>
-						<td>Turismo</td>
-						<td>Activo</td>
-						<td>Coordinación</td>
-						<td>Ayto. BCN</td>
-						<td>Barcelona</td>
-						<td>Cataluña</td>
-						<td style="width: 1%; background: none;">
-							<span id="desplegable">
-					         <ul class="drop-down closed">
-							    <li><p class="nav-button" style="cursor: pointer;">OPCIONES ▼</p></li>			    
-							    <li><a href="#">Editar vehículo</a></li>
-							    <li><a href="#">Imprimir vehículo</a></li>
-							    <li><a href="#">Archivar vehículo</a></li>
-							    <li><a href="#">Eliminar vehículo</a></li>
-							 </ul>			         
-							</span>
-						</td>
-				</tr>
-				<tr>
-						<td style="background: none;"><img id="icon_table" src="webroot/img/icon_moto.png"></td>
-						<td>2222AAA</td>
-						<td>Moto</td>
-						<td>Activo</td>
-						<td>UM</td>
-						<td>Ayto. BCN</td>
-						<td>Barcelona</td>
-						<td>Cataluña</td>
-						<td style="width: 1%; background: none;">
-							<span id="desplegable">
-					         <ul class="drop-down closed">
-							    <li><p class="nav-button" style="cursor: pointer;">OPCIONES ▼</p></li>			    
-							    <li><a href="#">Editar vehículo</a></li>
-							    <li><a href="#">Imprimir vehículo</a></li>
-							    <li><a href="#">Archivar vehículo</a></li>
-							    <li><a href="#">Eliminar vehículo</a></li>
-							 </ul>			         
-							</span>
-						</td>
-				</tr>
+					<?php echo $vehiculos;?>
 			</tbody>
 			</table>
 		</div> 
@@ -86,7 +45,7 @@
 	<!-- FORMULARIO -->
 		<div id="div_form">
 			<div id="div_form2">
-				    <form id="reg_vehiculo" action="add2.php" method="POST">  
+				    <form id="reg_vehiculo" action="inventario/registro_vehiculo_cont" method="POST">  
 				    <div>
 				      <h3>Registrar un vehículo</h3>
 				      <div id="div_line">
@@ -97,50 +56,61 @@
 				      <br>
 				      <div id="div_line">
 				      <label>Tipo de vehículo</label>
-				      	<select name="vehiculo">
-						   <option value="1">Moto</option> 
-						   <option value="2">Turismo</option> 
-						   <option value="3">4x4</option>
-						   <option value="4">Furgoneta</option> 
-						   <option value="5">Camión</option> 
+				      	<select name="tipo">
+						   <option value="Moto">Moto</option> 
+						   <option value="Turismo">Turismo</option> 
+						   <option value="4x4">4x4</option>
+						   <option value="Furgoneta">Furgoneta</option> 
+						   <option value="Camión">Camión</option> 
 						</select>
 					</div>
 				      <br>
 				      <div id="div_line">
 				      <label>Estado del vehículo</label>
-				      	<select name="departamento">
-							   <option value="1">En activo</option> 
-							   <option value="2">En taller</option> 
-							   <option value="3">Baja</option>
-							   <option value="3">Pendiente</option>
+				      	<select name="estado">
+							   <option value="En activo">En activo</option> 
+							   <option value="En taller">En taller</option> 
+							   <option value="Baja">Baja</option>
+							   <option value="Pendiente">Pendiente</option>
 							</select>
 					   </div>
 				      <br>
 				      <div id="div_line">
 				      <label>Departamento</label>
 					      <select name="departamento">
-							   <option value="1">UM</option> 
-							   <option value="2">Técnico</option> 
-							   <option value="3">Coordinación</option>
-							   <option value="3">Almacén</option>
-							   <option value="4">Dirección</option>
+							   <option value="UM">UM</option> 
+							   <option value="Técnico">Técnico</option> 
+							   <option value="Coordinación">Coordinación</option>
+							   <option value="Almacén">Almacén</option>
+							   <option value="Dirección">Dirección</option>
 							</select>
 						</div>
 				      <br>
 				      <div id="div_line">
+				      <label>Territorio</label>
+				      	<select name="territorio" id="select_terr">
+							   <option value="1">Cataluña</option> 
+							   <option value="2">Euskadi</option> 
+						</select>
+						</div>
+						<br>
+				      <div id="div_line">
 				      <label>Provincia</label>
 				      	<select name="provincia" id="select_prov">
-							   <option value="1">Barcelona</option> 
+							   <!-- <option value="1">Barcelona</option> 
 							   <option value="2">Girona</option> 
 							   <option value="3">Lleida</option>
-							   <option value="3">Tarragona</option>
+							   <option value="4">Tarragona</option>
+							   <option value="5">Araba</option> 
+							   <option value="6">Bizkaia</option> 
+							   <option value="7">Gipuzkoa</option> -->
 							</select>
 						</div>
 						<br>
 				      <div id="div_line">
 				      <label>Proyecto</label>
 				      	<select name="proyecto" id="select_project">
-<!-- 							   <option value="1">BNC Ayto.</option> 
+							<!-- <option value="1">BNC Ayto.</option> 
 							   <option value="2">DIBA</option> 
 							   <option value="3">Girona Ayto.</option>
 							   <option value="4">Girona Dip.</option>

@@ -37,7 +37,7 @@ $(document).ready(function(){
         });
 
 
-    //login
+//LOGIN
     $("#login").on("submit", function(e)
     {  
       e.preventDefault();
@@ -62,7 +62,7 @@ $(document).ready(function(){
             }
             else
             {
-              $("#Mensaje").html("No existe.");
+              $("#Mensaje").html("Usuari@ no existe en BD.");
             }
             
               
@@ -76,22 +76,54 @@ $(document).ready(function(){
 
 
 
+//DESPLEGABLES POPUP REGISTRAR VEHÍCULO
 
 // llamar ajax prov = data, enviará al controlador 'inventarioController' y este lo enviará al modelo 'inventarioModel'
+  $("#select_terr").change(function()
+  {
+    show_provincias();
+  });
+
+
 	$("#select_prov").change(function()
   {
-		var prov = $("#select_prov"); //JS recoge los datos de la #id del select.
-		 $.ajax({
+		show_proyectos();
+	});
+
+  show_provincias();
+
+
+}); //end document.ready
+
+// Las funciones siempre tienen que estar fuera del document.ready
+function show_provincias()
+{
+  var terr = $("#select_terr"); //JS recoge los datos de la #id del select de territorio.
+     $.ajax({
         type:'POST',
-        url:'inventario/desplegable_cont', //irá a inventarioController método desplegable_cont()
-        data: prov,
+        url:'inventario/desplegable_cont1', //irá a inventarioController método desplegable_cont1()
+        data: terr,
         success:function(data)
         {
           var data2= JSON.parse(data);
-          $('#select_project').html(data2); //inyecta en el selector de proyecto las opciones de provincia.
+          $('#select_prov').html(data2); //inyecta en el selector de proyecto las opciones de territorio.
+          show_proyectos(); //se puede llamar a otra función para mostrar por defecto el primer item del siguiente desplegable. 
         }
     }); 
-	});
+}
 
-});
+function show_proyectos()
+{
+  var prov = $("#select_prov"); //JS recoge los datos de la #id del select de provincia.
+     $.ajax({
+        type:'POST',
+        url:'inventario/desplegable_cont2', //irá a inventarioController método desplegable_cont2()
+        data: prov,
+        success:function(data)
+        {
+          var data3= JSON.parse(data);
+          $('#select_project').html(data3); //inyecta en el selector de proyecto las opciones de provincia.
+        }
+    }); 
+}
   

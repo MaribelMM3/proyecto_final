@@ -3582,6 +3582,7 @@ input, select, textarea {
 	border: 1px solid black;
 	margin: 0;
 	background-color: rgb(244, 238, 228);
+	line-height: 0.7em;
 }
 
 	#reg_vehiculo label{

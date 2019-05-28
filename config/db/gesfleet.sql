@@ -67,21 +67,39 @@ SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
+-- -----------------------------------------------------
+-- Table `gesfleet`.`select_prov` - //Popup REGISTRAR VEHÍCULO desplegable abuelo
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `gesfleet`.`select_terr` ;
+
+CREATE TABLE IF NOT EXISTS `gesfleet`.`select_terr` (
+  `id_terr` INT NOT NULL AUTO_INCREMENT,
+  `nom_terr` VARCHAR(45) NULL,
+  PRIMARY KEY (`id_terr`))
+ENGINE = InnoDB;
+
 
 -- -----------------------------------------------------
--- Table `gesfleet`.`select_prov`
+-- Table `gesfleet`.`select_prov` - //Popup REGISTRAR VEHÍCULO desplegable padre
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `gesfleet`.`select_prov` ;
 
 CREATE TABLE IF NOT EXISTS `gesfleet`.`select_prov` (
   `id_prov` INT NOT NULL AUTO_INCREMENT,
   `nom_prov` VARCHAR(45) NULL,
-  PRIMARY KEY (`id_prov`))
+  `select_terr_id_terr` INT NOT NULL,
+  PRIMARY KEY (`id_prov`, `select_terr_id_terr`),
+  INDEX `fk_select_prov_select_terr_idx` (`select_terr_id_terr` ASC),
+  CONSTRAINT `fk_select_prov_select_terr`
+    FOREIGN KEY (`select_terr_id_terr`)
+    REFERENCES `gesfleet`.`select_terr` (`id_terr`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `gesfleet`.`select_project`
+-- Table `gesfleet`.`select_project` - //Popup REGISTRAR VEHÍCULO desplegable nieto
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `gesfleet`.`select_project` ;
 
@@ -98,4 +116,21 @@ CREATE TABLE IF NOT EXISTS `gesfleet`.`select_project` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+-- -----------------------------------------------------
+-- Table `gesfleet`.`inventario` - //Vista de tabla (cuerpo) vehículos en Inventario
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `gesfleet`.`inventario` ;
+
+CREATE TABLE IF NOT EXISTS `inventario` (
+  `id_vehiculo` int(255) NOT NULL AUTO_INCREMENT,
+  `matricula` varchar(7) NOT NULL,
+  `tipo` varchar(100) NOT NULL,
+  `estado` varchar(100) NOT NULL,
+  `departamento` varchar(100) NOT NULL,
+  `territorio` varchar(100) NOT NULL,
+  `provincia` varchar(100) NOT NULL,
+  `proyecto` varchar(100) NOT NULL,
+  PRIMARY KEY (`id_vehiculo`),
+  UNIQUE KEY `Matricula` (`matricula`)
+) ENGINE=InnoDB;
 
