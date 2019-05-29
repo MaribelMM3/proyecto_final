@@ -35,8 +35,7 @@ $(document).ready(function(){
             $('.respuesta').toggle('slow');
             e.preventDefault();
         });
-
-
+  
 //LOGIN
     $("#login").on("submit", function(e)
     {  
@@ -92,8 +91,48 @@ $(document).ready(function(){
 
   show_provincias();
 
+//desplegable vehículo opción editar.
+  $(".despvehic").click(function(){
+    var id = $(this).attr("vehiculo_mat");
+    $("#div_edit").css("display", "block");
+    
+    $.ajax({
+        type: 'post',
+        url: '/proyecto_final/inventario/get_by_id',
+        data: "matricula="+id,
+        dataType: 'json',
+
+          success: function(data){
+            if(data)
+            {
+              $("#div_edit #matricula").val(data[0]["matricula"]);
+              $("#div_edit #tipo").val(data[0]["tipo"]);
+              $('#div_edit #estado option[value="'+data[0]["estado"]+'"]').prop('selected', true);
+              $('#div_edit #departamento option[value="'+data[0]["departamento"]+'"]').prop('selected', true);
+              
+              
+            }
+            else
+            {
+              // $("#Mensaje").html("Usuari@ no existe en BD.");
+            }
+          },
+
+          error: function(){
+            
+          }
+      });
+
+  });
+
+    $("despvehic_off").click(function(){
+      $("div_edit").css("display", "none");
+    });
+
 
 }); //end document.ready
+
+//FUNCIONES
 
 // Las funciones siempre tienen que estar fuera del document.ready
 function show_provincias()

@@ -191,8 +191,9 @@ input, select, textarea {
 		max-width: 100%;
 		width: 95em;
 		background-color: #d9d9d9;
-		height: 25em;
+		height: 100%;
 		border-radius: 5px;
+		padding-bottom: 1em;
 	}
 
 		@media screen and (max-width: 1680px) {
@@ -2534,7 +2535,7 @@ input, select, textarea {
 	color: #F4EEE4;
 	border-radius: 3px;
 	height:  1.95em;
-	background-color: #ad4232;
+	background-color: #009973;
 	margin-top: 3%;
 	float: right;
 	margin-right: 3%;
@@ -3416,6 +3417,9 @@ input, select, textarea {
     background-color: #e97770;
 }*/
 
+#despvehic{
+	cursor: pointer;
+}
 
 .btn_submit{
 	border: none;
@@ -3451,6 +3455,7 @@ input, select, textarea {
 /*	margin: .5em 0;*/
     margin-block-start: 0.3em;
     margin-block-end: 0.5em;
+    font-size: 0.9em;
 }
 
 .drop-down {
@@ -3488,6 +3493,7 @@ input, select, textarea {
   color: rgba(244, 238, 228, 0.6);
   text-decoration: none;
   padding: .2em; /* Larger touch target area */
+  font-size: .95em;
 }
 
 .drop-down li a:hover {
@@ -3555,7 +3561,7 @@ input, select, textarea {
 	outline: 0;
 }
 
-/*FORMULARIO*/
+/*FORMULARIO REGISTRO*/
 
 #div_form{
 	width: 100%;
@@ -3871,6 +3877,334 @@ input, select, textarea {
 .error-validation{
 	border: 1px solid red;
 }
+
+
+/*FORMULARIO DESPLEGABLE EDICIÓN*/
+
+#div_edit{
+	width: 100%;
+	height: 100vh;
+	position: fixed;
+    top: 0;
+	display: none;
+	background-color: rgba(77, 77, 77, .8);
+	padding: 10em 0 1em 0;
+}
+
+	#div_edit2{
+		width: 40%;
+		height: 80%;
+		margin: auto;
+	}
+		#div_line{
+			display: flex;
+			padding-left: 5em;
+		}
+
+#mod_vehiculo{
+	border-radius: 20px;
+	border: 1px solid black;
+	margin: 0;
+	background-color: rgb(244, 238, 228);
+	line-height: 0.7em;
+}
+
+	#mod_vehiculo label{
+		width: 10em;
+		display: flex;
+		margin-left: 1em;
+	}
+
+	#mod_vehiculo #matricula{
+		width: 15em;
+		border-radius: 3px;
+		margin-left: 1em;
+	}
+
+	#mod_vehiculo select{
+		width: 15em;
+		border-radius: 3px;
+		margin-left: 1em;
+	}
+
+	#botones
+	{
+		padding-left: 22%;
+		padding-right: 22%;
+	}
+
+		#btn_cancel
+		{
+			clear: both;
+			color: #F4EEE4;
+			border-radius: 3px;
+			height:  1.95em;
+			background-color: #ad4232;
+			line-height: 0;
+			cursor: pointer;
+			font-size: .87em;
+			font-family: 'Montserrat', sans-serif;
+			font-weight: 500;
+			letter-spacing: 0;
+			margin-bottom: 1em;
+		}
+
+		#btn_add
+		{
+			clear: both;
+			color: #F4EEE4;
+			border-radius: 3px;
+			height:  1.95em;
+			background-color: #00cc99;
+			line-height: 0;
+			cursor: pointer;
+			font-size: .87em;
+			font-family: 'Montserrat', sans-serif;
+			font-weight: 500;
+			letter-spacing: 0;
+			margin-bottom: 1em;
+		}
+
+
+@media screen and (max-width: 1766px) {
+		#div_edit2{
+		width: 40%;
+		height: 80%;
+		margin: auto;
+		}
+
+		#div_line{
+		display: flex;
+		padding-left: 1em;
+		}
+		
+		#reg_vehiculo select{
+		width: 13em;
+	    border-radius: 3px;
+	    margin-left: 0.5em;
+	    margin-right: 1em;
+		}
+
+		#mod_vehiculo #matricula{
+		width: 11em;
+	    border-radius: 3px;
+	    margin-left: 1em;
+	    margin-right: 1em;
+		}
+
+		#botones {
+		padding-left: 20%;
+		padding-right: 20%;
+		}
+
+	}
+
+@media screen and (max-width: 1680px) {
+		#2{
+		width: 40%;
+		height: 80%;
+		margin: auto;
+		}
+
+		#div_line{
+		display: flex;
+		padding-left: 1em;
+		}
+		
+		#mod_vehiculo select{
+		width: 13em;
+	    border-radius: 3px;
+	    margin-left: 0.5em;
+	    margin-right: 1em;
+		}
+
+		#mod_vehiculo #matricula{
+		width: 11em;
+	    border-radius: 3px;
+	    margin-left: 1em;
+	    margin-right: 1em;
+		}
+
+		#botones {
+		padding-left: 17%;
+		padding-right: 17%;
+		}
+
+	}
+
+	@media screen and (max-width: 1852px) {
+		#2{
+		width: 40%;
+		height: 80%;
+		margin: auto;
+		}
+
+		#div_line{
+		display: flex;
+		padding-left: 1em;
+		}
+		
+		#mod_vehiculo select{
+		width: 13em;
+	    border-radius: 3px;
+	    margin-left: 0.5em;
+	    margin-right: 1em;
+		}
+
+		#mod_vehiculo #matricula{
+		width: 11em;
+	    border-radius: 3px;
+	    margin-left: 1em;
+	    margin-right: 1em;
+		}
+
+		#botones {
+		padding-left: 21%;
+		padding-right: 21%;
+		}
+
+	}
+
+	@media screen and (max-width: 1680px) {
+		#2{
+		width: 40%;
+		height: 80%;
+		margin: auto;
+		}
+
+		#div_line{
+		display: flex;
+		padding-left: 1em;
+		}
+		
+		#mod_vehiculo select{
+		width: 13em;
+	    border-radius: 3px;
+	    margin-left: 0.5em;
+	    margin-right: 1em;
+		}
+
+		#mod_vehiculo #matricula{
+		width: 11em;
+	    border-radius: 3px;
+	    margin-left: 1em;
+	    margin-right: 1em;
+		}
+
+		#botones {
+		padding-left: 17%;
+		padding-right: 17%;
+		}
+
+	}
+
+	@media screen and (max-width: 1280px) {
+		#2{
+		width: 45%;
+		height: 80%;
+		margin: auto;
+		}
+
+		#div_line{
+		display: flex;
+		padding-left: 1em;
+		}
+		
+		#mod_vehiculo select{
+		width: 13em;
+	    border-radius: 3px;
+	    margin-left: 0.5em;
+	    margin-right: 1em;
+		}
+
+		#mod_vehiculo #matricula{
+		width: 11em;
+	    border-radius: 3px;
+	    margin-left: 1em;
+	    margin-right: 1em;
+		}
+
+		#botones {
+		padding-left: 15%;
+		padding-right: 15%;
+		}
+
+	}
+
+	@media screen and (max-width: 980px) {
+		#2{
+		width: 70%;
+		height: 80%;
+		margin: auto;
+		}
+
+		#div_line{
+		display: flex;
+		padding-left: 1em;
+		}
+		
+		#mod_vehiculo select{
+		width: 13em;
+	    border-radius: 3px;
+	    margin-left: 0.5em;
+	    margin-right: 1em;
+		}
+
+		#mod_vehiculo #matricula{
+		width: 11em;
+	    border-radius: 3px;
+	    margin-left: 1em;
+	    margin-right: 1em;
+		}
+
+		#botones {
+		padding-left: 20%;
+		padding-right: 20%;
+		}
+
+	}
+
+	@media screen and (max-width: 736px) {
+		#2{
+		width: 70%;
+		height: 80%;
+		margin: auto;
+		}
+
+		#div_line{
+		display: flex;
+		padding-left: 1em;
+		}
+		
+		#mod_vehiculo select{
+		width: 13em;
+	    border-radius: 3px;
+	    margin-left: 0.5em;
+	    margin-right: 1em;
+		}
+
+		#mod_vehiculo #matricula{
+		width: 11em;
+	    border-radius: 3px;
+	    margin-left: 1em;
+	    margin-right: 1em;
+		}
+
+	}
+
+.error-validation{
+	border: 1px solid red;
+}
+
+
+
+
+
+
+
+
+
+
 /*PRUEBA TABLA RESPONSIVE*/
 /*@media only screen 
     and (max-width: 760px), (min-device-width: 768px) 

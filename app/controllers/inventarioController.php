@@ -31,10 +31,9 @@ class inventarioController extends Controller {
                         $dato .='<span id="desplegable">';
                          $dato .='<ul class="drop-down closed">';
                             $dato .='<li><p class="nav-button" style="cursor: pointer;">OPCIONES ▼</p></li>              ';
-                            $dato .='<li><a href="#">Editar vehículo</a></li>';
-                            $dato .='<li><a href="#">Imprimir vehículo</a></li>';
-                            $dato .='<li><a href="#">Archivar vehículo</a></li>';
-                            $dato .='<li><a href="#">Eliminar vehículo</a></li>';
+                            $dato .='<li><a class="despvehic" vehiculo_mat="'.$value["matricula"].'">Editar vehículo</a></li>';
+                            $dato .='<li><a href="">Archivar vehículo</a></li>';
+                            $dato .='<li><a href="">Eliminar vehículo</a></li>';
                          $dato .='</ul>                   ';
                         $dato .='</span>';
                     $dato .='</td>';
@@ -105,8 +104,18 @@ class inventarioController extends Controller {
         // echo json_encode($respuesta);//una petición de ajax siempre se hace sobre echo y json.
     }
 
+//DATOS POPUP EDICIÓN VEHÍCULO
+    public function get_by_id()
+    {
+        $matricula = ($_POST['matricula']); 
 
+        require_once(ROOT . DS . 'app' . DS . 'models' . DS . 'inventarioModel.php');
+        //instancio a la clase inventario y llamo al método desplegable_mod dentro de inventarioModel
+        $vehiculo = new inventario;
+        $mensaje=$vehiculo->get_by_id($matricula);
 
+        echo json_encode($mensaje);
+    }
 
 
 }

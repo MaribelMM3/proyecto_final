@@ -6,7 +6,7 @@ class inventario extends Model {
     {
         $connect  = Model::getInstanceDB();
         // $sql = "SELECT * from inventario";
-        $sql = "select id_vehiculo, matricula, tipo, estado, departamento, S.nom_terr, P.nom_prov, R.nom_project from inventario I join select_terr S join select_prov P join select_project R on I.territorio = S.id_terr and I.provincia = P.id_prov and I.proyecto = R.id_project;";
+        $sql = "select distinct id_vehiculo, matricula, tipo, estado, departamento, S.nom_terr, P.nom_prov, R.nom_project from inventario I join select_terr S join select_prov P join select_project R on I.territorio = S.id_terr and I.provincia = P.id_prov and I.proyecto = R.id_project;";
         $stmt = $connect->prepare($sql);
         $stmt->execute();
         $vehiculos = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -78,6 +78,18 @@ class inventario extends Model {
         }else{
             return 'Este vehículo ya existe';
         }
+    }
+
+//POPUP EDICIÓN VEHÍCULO
+    public function get_by_id($matricula)
+    {
+        $connect  = Model::getInstanceDB();
+        // $sql = "SELECT * from inventario";
+        $sql = "select * from `inventario` where `matricula` = '$matricula';";
+        $stmt = $connect->prepare($sql);
+        $stmt->execute();
+        $vehiculos = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $vehiculos;
     }
 }
 
