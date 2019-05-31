@@ -13,7 +13,7 @@ class inventario extends Model {
         return $vehiculos;
     }
 
-	//Popup REGISTRAR VEHÍCULO
+	//DESPLEGABLES DEPENDIENTES////////////
 	public function desplegable_mod1($id_territorio){
 
 		$connect = Model::getInstanceDB();
@@ -42,7 +42,7 @@ class inventario extends Model {
 	}
 
 
-//POPUP REGISTRO VEHÍCULO
+//POPUP REGISTRO VEHÍCULO////////////
 	public function registro_vehiculo_mod($matricula,$tipo,$estado,$departamento, $territorio, $provincia, $proyecto)
 	{
         $connect = Model::getInstanceDB();
@@ -64,9 +64,7 @@ class inventario extends Model {
         	$stmt->bindParam(':departamento', $departamento);
         	$stmt->bindParam(':territorio', $territorio);
         	$stmt->bindParam(':provincia', $provincia);
-        	$stmt->bindParam(':proyecto', $proyecto);
-            var_dump($stmt);
-        	
+        	$stmt->bindParam(':proyecto', $proyecto);        	
 
         	if($stmt->execute())
         	{
@@ -80,7 +78,7 @@ class inventario extends Model {
         }
     }
 
-//POPUP EDICIÓN VEHÍCULO
+//POPUP EDICIÓN VEHÍCULO//////////////
     public function get_by_id($matricula)
     {
         $connect  = Model::getInstanceDB();
@@ -91,27 +89,43 @@ class inventario extends Model {
         $vehiculos = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $vehiculos;
     }
+
+    public function edicion_vehiculo_mod($matricula,$estado,$departamento, $territorio, $provincia, $proyecto)
+    {
+        $connect = Model::getInstanceDB();
+        $sql = ("UPDATE `inventario` SET `estado`=:estado, `departamento`=:departamento, `territorio`=:territorio, `provincia`=:provincia, `proyecto`=:proyecto WHERE `matricula`=:matricula;");
+            $stmt = $connect->prepare($sql);
+            $stmt->bindParam(':matricula', $matricula);
+            $stmt->bindParam(':estado', $estado);
+            $stmt->bindParam(':departamento', $departamento);
+            $stmt->bindParam(':territorio', $territorio);
+            $stmt->bindParam(':provincia', $provincia);
+            $stmt->bindParam(':proyecto', $proyecto); 
+        $stmt->execute();
+    }
+
+        
+    //ELIMINAR VEHÍCULO//////////////
+    public function DEL_by_id($matricula)
+    {
+        $connect  = Model::getInstanceDB();
+        // $sql = "SELECT * from inventario";
+        $sql = "DELETE FROM `inventario` WHERE `matricula`=:matricula;";
+        $stmt = $connect->prepare($sql);
+        $stmt->bindParam(':matricula', $matricula);
+        $stmt->execute();
+   }
+
+
+    // //BUSCADOR
+    // static function check($word)
+    // {
+    //     $connect  = Model::getInstanceDB();
+    //     $sql = "SELECT * FROM `inventario` WHERE * LIKE concat('%', $word, '%')";
+    //     $stmt = $connect->prepare($sql);
+    //     $stmt->execute();
+    //     $vehiculos = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    //     return $vehiculos;
+    // }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            // $insert=$this->connect->query("INSERT into `inventario` (`id_vehiculo`, `inventario`, `tipo`, `estado`, `departamento`, `territorio`, `provincia`, `proyecto`) VALUES (default, '$matricula','$tipo','$estado','$departamento', '$territorio', '$provincia', '$proyecto');")
-        //     if($insert==true){
-        //       return true;
-        //     }else{
-        //         return false;
-        //     }
-        // }else{
-        //     return false;
-        // }

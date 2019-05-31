@@ -32,9 +32,9 @@ class inventarioController extends Controller {
                          $dato .='<ul class="drop-down closed">';
                             $dato .='<li><p class="nav-button" style="cursor: pointer;">OPCIONES ▼</p></li>              ';
                             $dato .='<li><a class="despvehic" vehiculo_mat="'.$value["matricula"].'">Editar vehículo</a></li>';
-                            $dato .='<li><a href="">Archivar vehículo</a></li>';
-                            $dato .='<li><a href="">Eliminar vehículo</a></li>';
-                         $dato .='</ul>                   ';
+                            // $dato .='<li><a href="">Archivar vehículo</a></li>';
+                            $dato .='<li><a class="despvehic_del"vehiculo_mat="'.$value["matricula"].'">Eliminar vehiculo</a></li>';
+                         $dato .='</ul>';
                         $dato .='</span>';
                     $dato .='</td>';
             $dato .='</tr>';
@@ -94,14 +94,6 @@ class inventarioController extends Controller {
         $mensaje=$vehiculo->registro_vehiculo_mod($matricula, $tipo, $estado, $departamento, $territorio, $provincia, $proyecto);
 
         $this->index();
-
-        // $respuesta='';
-        // foreach ($proyecto as $value) 
-        // {
-        //     $respuesta .= '<option value='.$value["id_project"].'>'.$value["nom_project"].'</option>'; 
-        // }
-
-        // echo json_encode($respuesta);//una petición de ajax siempre se hace sobre echo y json.
     }
 
 //DATOS POPUP EDICIÓN VEHÍCULO
@@ -117,6 +109,48 @@ class inventarioController extends Controller {
         echo json_encode($mensaje);
     }
 
+     //para recoger los datos de la edición y enviarlos al modelo
+     public function edicion_vehiculo_cont(){
+        $matricula = ($_POST['matricula']); //aunque JS recoge el #id, en PHP se trabaja con el name. 
+        $tipo = ($_POST['tipo']);
+        $estado = ($_POST['estado']);
+        $departamento = ($_POST['departamento']);
+        $territorio = ($_POST['territorio']);
+        $provincia = ($_POST['provincia']);
+        $proyecto = ($_POST['proyecto']);
+
+        require_once(ROOT . DS . 'app' . DS . 'models' . DS . 'inventarioModel.php');
+        //instancio a la clase inventario y llamo al método desplegable_mod dentro de inventarioModel
+        $vehiculo = new inventario;
+        $mensaje=$vehiculo->edicion_vehiculo_mod($matricula, $estado, $departamento, $territorio, $provincia, $proyecto);
+
+        $this->index();
+    }
+
+//ELIMINAR VEHÍCULO
+    public function DEL_by_id()
+    {
+        $matricula = ($_POST['matricula']); 
+
+        require_once(ROOT . DS . 'app' . DS . 'models' . DS . 'inventarioModel.php');
+        //instancio a la clase inventario y llamo al método desplegable_mod dentro de inventarioModel
+        $vehiculo = new inventario;
+        $vehiculo->DEL_by_id($matricula);
+
+        echo json_encode (true);
+    }
 
 }
+// //BUSCADOR
+//     public function buscar()
+//     {
+//         require_once(ROOT . DS . 'app' . DS . 'models' . DS . 'inventarioModel.php');
 
+//     if (isset($_POST["dato"])) 
+//     {
+//         echo json_encode(Item::check($_POST["dato"]));
+//     }
+
+
+// }
+// }
